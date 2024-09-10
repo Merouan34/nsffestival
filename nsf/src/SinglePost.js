@@ -5,6 +5,7 @@ import React ,{Component}from 'react';
 import { Class } from 'leaflet';
 import './ArtistItem.css';
 import './SinglePost.css';
+const apiUrl = process.env.REACT_APP_API_URL;
 
 
 class SinglePost extends Component {
@@ -30,7 +31,7 @@ class SinglePost extends Component {
     async componentDidMount() {
 
 
-        const w = await fetch(`http://localhost:5000/api/artists`, {
+        const w = await fetch(`${apiUrl}/api/artists`, {
             mode: 'cors',
             method: 'GET',
             headers: {
@@ -50,7 +51,7 @@ class SinglePost extends Component {
     
         const onClick = this.props;
         const media = this.state.media;
-        console.log(this.state.media)
+        
     
     return(
 

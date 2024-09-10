@@ -2,12 +2,16 @@
 import React ,{useState,Component} from 'react'
 import './Carte.css'
 import Entete from './Entete'
-import L from 'leaflet'
+
 import { Icon } from "leaflet";
 import { MapContainer, TileLayer, useMapEvents, Marker, Popup } from 'react-leaflet'
-import MarkerClusterGroup from "react-leaflet-cluster";
+
 import PuffLoader from "react-spinners/PuffLoader";
 import CardSelectBox from "./CardSelectBox.js"
+
+const apiUrl = process.env.REACT_APP_API_URL;
+
+
 const override = {
     display: "block",
     margin: "auto", 
@@ -93,7 +97,7 @@ class Carte extends Component {
 
     async componentDidMount() {
      
-      const url = this.state.selectedType ==""? `http://localhost:5000/api/cards`: `http://localhost:5000/api/cards?typeLieu=${this.state.selectedType}`; // Pas de filtre
+      const url = this.state.selectedType ==""? `${apiUrl}/api/cards`: `${apiUrl}/api/cards?typeLieu=${this.state.selectedType}`; // Pas de filtre
 
 
       const r = await fetch(url,{
@@ -112,8 +116,7 @@ class Carte extends Component {
  
 render(){
   const mapPost = this.state.mappost;
-  console.log(this.state.mappost)
-  console.log(`http://localhost:5000/api/cards?typeLieu=${this.state.selectedType}`)
+
  
   return (
     <div>

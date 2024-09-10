@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './AdminControl.css';
 import Breadcrumb from './breadcrumb';
+const apiUrl = process.env.REACT_APP_API_URL;
 
 class AdminNouveautes extends Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class AdminNouveautes extends Component {
 
     try {
       while (hasMorePages) {
-        const response = await fetch(`http://localhost:5000/api/news?page=${page}`);
+        const response = await fetch(`${apiUrl}/api/news?page=${page}`);
         const data = await response.json();
 
         if (data.news.length === 0) {
@@ -75,7 +76,7 @@ class AdminNouveautes extends Component {
 
   handleAddNews = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/news', {
+      const response = await fetch(`${apiUrl}/api/news`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -121,7 +122,7 @@ class AdminNouveautes extends Component {
 
     try {
       // Mettre à jour la nouveauté dans la collection 'news'
-      const response = await fetch(`http://localhost:5000/api/news/${encodeURIComponent(editingNouveauteId)}`, {
+      const response = await fetch(`${apiUrl}/api/news/${encodeURIComponent(editingNouveauteId)}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -159,7 +160,7 @@ class AdminNouveautes extends Component {
 
   handleDeleteNews = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/news/${id}`, {
+      const response = await fetch(`${apiUrl}/api/news/${id}`, {
         method: 'DELETE',
       });
 
@@ -180,7 +181,7 @@ class AdminNouveautes extends Component {
 
   render() {
     const { news, newNouveaute, editingNouveauteId, editingNouveaute } = this.state;
-    console.log(editingNouveaute,editingNouveauteId)
+   
     return (
       <div className="admin-control">
         <h1>Gestion des Nouveautés</h1>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './AdminControl.css'; // Assurez-vous de créer ce fichier CSS pour le style
 import Breadcrumb from './breadcrumb'; // Assurez-vous que ce chemin est correct
+const apiUrl = process.env.REACT_APP_API_URL;
 
 class AdminPart extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class AdminPart extends Component {
   // Fonction pour récupérer tous les partenaires
   fetchAllPartenaires = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/partenaires');
+      const response = await fetch(`${apiUrl}/api/partenaires`);
       const data = await response.json();
       this.setState({ partenaires: data });
     } catch (error) {
@@ -56,7 +57,7 @@ class AdminPart extends Component {
 
   handleAddPartenaire = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/partenaires', {
+      const response = await fetch(`${apiUrl}/api/partenaires`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -96,7 +97,7 @@ class AdminPart extends Component {
     const { editingPartenaireId, editingPartenaire } = this.state;
 
     try {
-      const response = await fetch(`http://localhost:5000/api/partenaires/${editingPartenaireId}`, {
+      const response = await fetch(`${apiUrl}/api/partenaires/${editingPartenaireId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -126,7 +127,7 @@ class AdminPart extends Component {
 
   handleDeletePartenaire = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/partenaires/${id}`, {
+      const response = await fetch(`${apiUrl}/api/partenaires/${id}`, {
         method: 'DELETE',
       });
 

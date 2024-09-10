@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Actualite.css'; // Assure-toi de créer ce fichier CSS
+const apiUrl = process.env.REACT_APP_API_URL;
 
 class Actualite extends Component {
   constructor(props) {
@@ -18,12 +19,12 @@ class Actualite extends Component {
   }
 
   fetchData = async (type, page = 1) => {
-    const url = type === 'urgence' ? `http://localhost:5000/api/urg?page=${page}` : `http://localhost:5000/api/news?page=${page}`;
+    const url = type === 'urgence' ? `${apiUrl}/api/urg?page=${page}` : `${apiUrl}/api/news?page=${page}`;
     try {
       const response = await fetch(url);
       const data = await response.json();
     ;
-    console.log(url)
+   
       if (type === 'urgence') {
         this.setState({ urgents: data.urgents,
                         totalPages: data.totalPages,

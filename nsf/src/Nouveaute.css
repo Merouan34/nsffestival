@@ -100,3 +100,27 @@
     color: #e0e0e0;
   }
   
+@media screen and (min-width: 2000px) {
+ 
+}
+
+@media screen and (max-width: 1150px) {
+  .nouveaute-item-title {
+    font-size: 1em;
+    margin: 0;
+    font-weight: bold;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .nouveaute-item-title {
+    font-size: 1em;
+    margin: 0;
+    font-weight: bold;
+  }
+}
+
+@media screen and (max-width: 450px) {
+ 
+  
+}

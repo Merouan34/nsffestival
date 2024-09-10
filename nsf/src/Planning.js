@@ -4,6 +4,7 @@ import Entete from './Entete';
 import Title from './Title';
 import PuffLoader from "react-spinners/PuffLoader";
 import SelectBox from './SelectBox.js';
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const override = {
     display: "block",
@@ -38,7 +39,7 @@ export default class Planning extends Component {
 
   async componentDidMount() {
 
-    const url = this.state.joursSelectionnes=="" ?`http://localhost:5000/api/planning` :`http://localhost:5000/api/planning?jour=${this.state.joursSelectionnes}` ; 
+    const url = this.state.joursSelectionnes=="" ?`${apiUrl}/api/planning` :`${apiUrl}/api/planning?jour=${this.state.joursSelectionnes}` ; 
         
     const w = await fetch(url, {
         mode: 'cors',

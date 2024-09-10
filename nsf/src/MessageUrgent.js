@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './MessageUrgent.css'; // Assure-toi de créer ce fichier CSS
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 class MessageUrgent extends Component {
     constructor( props) {
 		super( props );
@@ -24,14 +26,14 @@ class MessageUrgent extends Component {
 
   async fetchMessages(page = 1) {
     try {
-      const response = await fetch(`http://localhost:5000/api/urg?page=${page}`, {
+      const response = await fetch(`${apiUrl}/api/urg?page=${page}`, {
         mode: 'cors',
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
         },
       });
-      console.log('Response:', response); // Vérifier la réponse brute de l'API
+     
       if (!response.ok) {
         throw new Error('Erreur lors de la récupération des messages urgents');
       }
@@ -44,7 +46,7 @@ class MessageUrgent extends Component {
     });
       this.setState({isLoading:false})
       
-      console.log(data);
+      
     } catch (error) {
       console.error('Erreur lors de la récupération des messages urgents:', error);
     }
@@ -59,7 +61,7 @@ class MessageUrgent extends Component {
   };
   render() {
     const { urgents, currentPage, totalPages, visible } = this.state;
-    console.log(urgents,totalPages,currentPage)
+
     if (!visible) return null;
 
     return (
@@ -77,7 +79,7 @@ class MessageUrgent extends Component {
             </>
           ))
         )}
-        <a href="http://localhost:3000/actu" className="message-urgent-link"> En savoir plus</a>
+        <a href={apiUrl+'/actu'} className="message-urgent-link"> En savoir plus</a>
         <button className="message-urgent-close" onClick={this.handleClose}>
           &times;
         </button>

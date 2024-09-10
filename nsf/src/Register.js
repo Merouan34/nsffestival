@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './Account.css';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+  
 class Register extends Component {
   state = {
     name: '',
@@ -18,7 +20,7 @@ class Register extends Component {
     const { name, email, password } = this.state;
 
     try {
-      const response = await fetch('http://localhost:5000/api/register', {
+      const response = await fetch(`${apiUrl}/api/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password })

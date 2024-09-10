@@ -3,6 +3,7 @@ import React,{ Component, CSSProperties }  from 'react'
 import './ArtistItem.css';
 import SelectList from './SelectList'
 import PuffLoader from "react-spinners/PuffLoader";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const override = {
     display: "block",
@@ -39,7 +40,7 @@ class SingleImage extends Component {
     async componentDidMount() {
 
 
-        const w = await fetch(`http://localhost:5000/api/artists?${this.state.valeurSelectionnee}`, {
+        const w = await fetch(`${apiUrl}/api/artists?${this.state.valeurSelectionnee}`, {
             mode: 'cors',
             method: 'GET',
             headers: {
@@ -51,14 +52,14 @@ class SingleImage extends Component {
         const d = await w.json();
         this.setState({ media: d });
         this.setState({isLoading:false})
-        console.log(this.state.valeurSelectionnee)
+        
     }
     
     render() {
 
     const onClick = this.props;
     const media = this.state.media;
-    console.log(this.state.media.id)
+ 
     return(
             <div> 
             

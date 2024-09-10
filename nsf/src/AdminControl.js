@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AdminControl.css';
 import Breadcrumb from './breadcrumb';
+const apiUrl = process.env.REACT_APP_API_URL;
 
 class AdminControl extends Component {
   state = {
@@ -43,7 +44,7 @@ class AdminControl extends Component {
 
     for (const endpoint of endpoints) {
       try {
-        const response = await fetch(`http://localhost:5000/api/${endpoint}`, {
+        const response = await fetch(`${apiUrl}/api/${endpoint}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -75,7 +76,7 @@ class AdminControl extends Component {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/artists', {
+      const response = await fetch(`${apiUrl}/api/artists`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -95,7 +96,7 @@ class AdminControl extends Component {
 
         };
         
-        const planningResponse = await fetch('http://localhost:5000/api/planning', {
+        const planningResponse = await fetch(`${apiUrl}/api/planning`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -139,7 +140,7 @@ class AdminControl extends Component {
   
     try {
       // Mettre à jour l'artiste dans la collection 'artists'
-      const response = await fetch(`http://localhost:5000/api/artists/${encodeURIComponent(editingArtistId)}`, {
+      const response = await fetch(`${apiUrl}/api/artists/${encodeURIComponent(editingArtistId)}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -158,7 +159,7 @@ class AdminControl extends Component {
           nomScene: editingArtist.nomScene // Assurez-vous que la clé correspond à celle dans la DB
         };
   
-        const planningResponse = await fetch(`http://localhost:5000/api/planning/${encodeURIComponent(editingArtist.nomArtist)}`, {
+        const planningResponse = await fetch(`${apiUrl}/api/planning/${encodeURIComponent(editingArtist.nomArtist)}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -189,7 +190,7 @@ class AdminControl extends Component {
     if (!confirmation) return;
   
     try {
-      const response = await fetch(`http://localhost:5000/api/artists/${id}`, {
+      const response = await fetch(`${apiUrl}/api/artists/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,

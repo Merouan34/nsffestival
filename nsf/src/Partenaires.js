@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Entete from './Entete'
 import './Partenaires.css'
-import Title from './Title';
 import PuffLoader from "react-spinners/PuffLoader";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const override = {
     display: "block",
@@ -29,7 +29,7 @@ export default class Partenaires extends Component {
 
   fetchPartenaires = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/partenaires');
+      const response = await fetch(`${apiUrl}/api/partenaires`);
       if (!response.ok) {
         throw new Error('Erreur lors de la récupération des partenaires');
       }

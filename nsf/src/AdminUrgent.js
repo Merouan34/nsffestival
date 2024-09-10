@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './AdminControl.css'; // Assurez-vous que les styles sont bien importés
 import Breadcrumb from './breadcrumb'; // Assurez-vous que le chemin est correct
+const apiUrl = process.env.REACT_APP_API_URL;
 
 class AdminUrgent extends Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class AdminUrgent extends Component {
 
     try {
       while (hasMorePages) {
-        const response = await fetch(`http://localhost:5000/api/urg?page=${page}`);
+        const response = await fetch(`${apiUrl}/api/urg?page=${page}`);
         const data = await response.json();
 
         if (data.urgents.length === 0) {
@@ -75,7 +76,7 @@ class AdminUrgent extends Component {
 
   handleAddUrgent = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/urg', {
+      const response = await fetch(`${apiUrl}/api/urg`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -119,7 +120,7 @@ class AdminUrgent extends Component {
     const { editingUrgentId, editingUrgent } = this.state;
 
     try {
-      const response = await fetch(`http://localhost:5000/api/urg/${encodeURIComponent(editingUrgentId)}`, {
+      const response = await fetch(`${apiUrl}/api/urg/${encodeURIComponent(editingUrgentId)}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -152,7 +153,7 @@ class AdminUrgent extends Component {
 
   handleDeleteUrgent = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/urg/${id}`, {
+      const response = await fetch(`${apiUrl}/api/urg/${id}`, {
         method: 'DELETE',
       });
 
@@ -173,7 +174,7 @@ class AdminUrgent extends Component {
 
   render() {
     const { urgent, newUrgent, editingUrgentId, editingUrgent } = this.state;
-    console.log(urgent, newUrgent, editingUrgentId, editingUrgent)
+ 
     return (
       <div className="admin-control">
         <h1>Gestion des Urgences</h1>

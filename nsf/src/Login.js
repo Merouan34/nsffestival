@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Account.css';
+const apiUrl = process.env.REACT_APP_API_URL;
 
 // Fonction pour vérifier la connexion et rediriger si nécessaire
 const checkAuth = (navigate) => {
@@ -52,14 +53,14 @@ class Login extends Component {
     const { email, password } = this.state;
 
     try {
-      const response = await fetch('http://localhost:5000/api/login', {
+      const response = await fetch(`${apiUrl}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
       });
 
       const data = await response.json();
-      console.log(data.admin)
+    
 
       if (response.ok) {
         this.setState({ message: 'Connexion réussie.' });
@@ -78,7 +79,7 @@ class Login extends Component {
       }
     } catch (error) {
       this.setState({ message: 'Erreur lors de la connexion.' });
-      console.log(error)
+     
     }
   };
 

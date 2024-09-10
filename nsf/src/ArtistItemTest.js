@@ -26,7 +26,7 @@ const List = ({}) => {
     const data1 = document.getElementById(e.target.id+'s');
    
     var data2= data1; 
-    console.log(data2)
+    
 
     
     setClickedData1(data2.outerHTML);

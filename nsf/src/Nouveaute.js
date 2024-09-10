@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './Nouveaute.css'; // Assurez-vous de créer ce fichier CSS
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 class Nouveaute extends Component {
   state = {
     news: [],
@@ -21,7 +23,7 @@ class Nouveaute extends Component {
 
     while (currentPage <= totalPages) {
       try {
-        const response = await fetch(`http://localhost:5000/api/news?page=${currentPage}`);
+        const response = await fetch(`${apiUrl}/api/news?page=${currentPage}`);
         const data = await response.json();
         allNews.push(...data.news);
         totalPages = data.totalPages;
