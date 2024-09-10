@@ -1,5 +1,0 @@
-
-[build]
-  publish="/nsf/build"
-  base = ""
-  node_version = "14"
