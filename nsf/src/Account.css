@@ -1,0 +1,113 @@
+.containeraccount {
+  position: relative; /* Pour que le pseudo-élément soit positionné correctement */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: 'Candara', 'Trebuchet MS', 'Tahoma', sans-serif;
+  overflow: hidden; /* Empêche le débordement du pseudo-élément */
+}
+
+.containeraccount::before {
+  content: ''; /* Nécessaire pour les pseudo-éléments */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(./img/bgg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: brightness(50%) blur(5px); /* Applique le flou uniquement au pseudo-élément */
+  z-index: -1; /* Place l'image de fond floue derrière tout le contenu */
+}
+
+.form-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  max-width: 500px;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative; /* Pour s'assurer que le contenu reste au-dessus du pseudo-élément */
+  z-index: 1; /* Place le contenu du formulaire au-dessus du pseudo-élément de fond */
+}
+
+/* Reste de votre CSS reste inchangé */
+
+.containeraccount a {
+  color: #333333;
+  text-align: center;
+  padding-top: 30px;
+  font-weight: 700;
+  text-align: center;
+  display: block;
+}
+
+.containeraccount h1 {
+  font-size: 2.5rem;
+  color: #333333;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.containeraccount label {
+  display: block;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #313131;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width: calc(100% - 20px);
+  padding: 15px;
+  margin: 0 auto 20px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: block;
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  background-color: var(--color-orange);
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+  background-color: #611b00;
+}
+
+.message {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}

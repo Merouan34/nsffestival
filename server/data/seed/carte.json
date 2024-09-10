@@ -1,0 +1,82 @@
+[
+    {
+      "idLieu": 1,
+      "nomLieu": "La scène vers le squatepark",
+      "descriptionLieu": "Une scène animée située près du skatepark, parfaite pour les performances en plein air.",
+      "lienLogoLieu": "",
+      "LattLieu": "43.654300,3.93340",
+      "typeLieu": "scene"
+    },
+    {
+      "idLieu": 2,
+      "nomLieu": "La scène vers l'ile au canard",
+      "descriptionLieu": "Une scène centrale avec une vue magnifique sur l'île au canard, idéale pour attirer les foules.",
+      "lienLogoLieu": "",
+      "LattLieu": "43.65440,3.9316",
+      "typeLieu": "scene"
+    },
+    {
+      "idLieu": 3,
+      "nomLieu": "La scène en haut",
+      "descriptionLieu": "Une scène perchée sur une élévation, offrant une vue panoramique et une acoustique exceptionnelle.",
+      "lienLogoLieu": "",
+      "LattLieu": "43.655800,3.92950",
+      "typeLieu": "scene"
+    },
+    {
+      "idLieu": 4,
+      "nomLieu": "La scène au bord du lac",
+      "descriptionLieu": "Une scène pittoresque au bord du lac, offrant une atmosphère tranquille et une vue relaxante.",
+      "lienLogoLieu": "",
+      "LattLieu": "43.654266,3.9285",
+      "typeLieu": "scene"
+    },
+    {
+      "idLieu": 5,
+      "nomLieu": "Buvette 1",
+      "descriptionLieu": "Un stand de boissons rafraîchissantes pour étancher votre soif pendant le festival.",
+      "lienLogoLieu": "",
+      "LattLieu": "43.65520,3.9283",
+      "typeLieu": "buvette"
+    },
+    {
+      "idLieu": 6,
+      "nomLieu": "Buvette 2",
+      "descriptionLieu": "Un autre stand de boissons, offrant une grande variété de rafraîchissements pour tous les goûts.",
+      "lienLogoLieu": "",
+      "LattLieu": "43.65550,3.9330",
+      "typeLieu": "buvette"
+    },
+    {
+      "idLieu": 7,
+      "nomLieu": "WC 1",
+      "descriptionLieu": "Des installations sanitaires propres et bien entretenues pour le confort des festivaliers.",
+      "lienLogoLieu": "",
+      "LattLieu": "43.65480,3.9288",
+      "typeLieu": "wc"
+    },
+    {
+      "idLieu": 8,
+      "nomLieu": "WC 2",
+      "descriptionLieu": "Autres installations sanitaires, disponibles pour réduire les temps d'attente.",
+      "lienLogoLieu": "",
+      "LattLieu": "43.65475,3.9330",
+      "typeLieu": "wc"
+    },
+    {
+      "idLieu": 9,
+      "nomLieu": "Snack 1",
+      "descriptionLieu": "Un stand de snacks variés pour satisfaire toutes vos envies culinaires.",
+      "lienLogoLieu": "",
+      "LattLieu": "43.65470,3.9278",
+      "typeLieu": "snack"
+    },
+    {
+      "idLieu": 10,
+      "nomLieu": "Snack 2",
+      "descriptionLieu": "Un autre stand de snacks, proposant une large sélection de gourmandises pour tous les goûts.",
+      "lienLogoLieu": "",
+      "LattLieu": "43.65520,3.9337",
+      "typeLieu": "snack"
+    }
+  ]

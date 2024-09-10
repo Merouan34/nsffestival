@@ -1,0 +1,101 @@
+/* Assurez-vous de charger Google Fonts pour Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+.bgnews{
+    background-color: rgba(0, 0, 0, 0.8)
+}
+.actualité-container {
+  font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #c2c1c1;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  }
+
+.tab-buttons {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  font-family: 'Poppins', sans-serif;
+  background-color: #e0e0e0;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 500;
+}
+
+.tab-button.active {
+  background-color: #721c24;
+  color: #fff;
+}
+
+.tab-button:hover {
+  background-color: #470000;
+  color: #fff;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item {
+  font-family: 'Poppins', sans-serif;
+  padding: 15px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  transition: box-shadow 0.3s;
+}
+
+.item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.item-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 5px;
+}
+
+.item-description {
+  font-size: 14px;
+  color: #252525;
+}
+
+.item-date {
+  font-size: 12px;
+  color: #414141;
+}
+
+.pagination-controls {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.pagination-controls button {
+  font-family: 'Poppins', sans-serif;
+  background-color: #721c24;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin: 0 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-controls button:hover {
+  background-color: #f5c6cb;
+  color: #721c24;
+}

@@ -1,0 +1,66 @@
+.app__header {
+    background-image: url(./img/bgg.png);
+    background-size: 120%;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: brightness(1.0) contrast(1.2);
+    position: relative;
+}
+
+.app__header-h1-wrapper {
+    width: 100%; /* Prend toute la largeur de l'écran */
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7) 20%, rgba(0, 0, 0, 0.7) 80%, rgba(0, 0, 0, 0)); /* Dégradé inverse */
+    padding: 20px 0; /* Espace vertical autour du texte */
+    text-align: center; /* Centre le texte */
+}
+
+.app__header-h1 {
+    font-family: 'Candara', 'Trebuchet MS', 'Tahoma', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 100px;
+    font-size: 80px;
+    color: rgb(212, 163, 0);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9); /* Ombre de texte pour profondeur */
+    margin: 0; /* Retire les marges par défaut */
+    display: inline-block; /* S'assure que le texte est centré */
+}
+.textdate{
+    font-family: var(--font-alt);
+    color: var(--color-black);
+    font-size: 30px;
+    font-weight: 500;
+    margin: 30px;
+}
+.pdate{
+    list-style: none;
+    text-align: center;
+    margin: 0.3rem;
+}
+
+@media screen and (min-width: 2000px) {
+    .app__header-h1 {
+        font-size: 180px;
+        line-height: 210px;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .app__header-h1 {
+        font-size: 60px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .app__header-h1 {
+        font-size: 40px;
+        line-height: 50px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .app__header-h1 {
+        font-size: 30px;
+        line-height: 40px;
+    }
+}

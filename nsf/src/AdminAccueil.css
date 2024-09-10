@@ -1,0 +1,39 @@
+/* AdminAccueil.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+.admin-home {
+    font-family: 'Poppins', sans-serif;
+    background-color:rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    padding: 80px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .admin-home h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .admin-buttons {
+    
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .admin-buttons button {
+    font-family: 'Poppins', sans-serif;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-buttons button:hover {
+    background-color: #0056b3;
+  }
+  

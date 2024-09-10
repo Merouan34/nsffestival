@@ -1,0 +1,57 @@
+.mapwrapper{
+     display: grid;
+     justify-content: center;
+     background-color: rgba(0, 0, 0, 0.8);
+     
+}
+.cardselect{
+     margin: 0.2rem;
+     padding: 0.5em;
+     text-align: center;
+     font-family: var(--font-alt);
+     font-weight: bolder;
+}
+.mapwrapper>h2{  
+     text-align: left;
+     font-family: var(--font-alt); 
+ }
+ .cardlinkstyle{
+     text-align: left;
+     font-family: var(--font-alt); 
+     font-weight: bolder;
+ }
+.elemright{
+     margin: 0.5rem;
+     display: flex;
+     text-align: center;
+     vertical-align: bottom;
+     font-family: var(--font-alt);
+     color: white;
+ }
+
+#map {
+     
+     display: block;
+     height: 800px;
+     width: 1200px;
+     justify-content: center;
+    }
+
+@media screen and (min-width: 2000px){
+
+}
+
+@media screen and (max-width: 1150px){
+#map{
+     height: 600px;
+     width:600px;
+}
+}
+@media screen and (max-width: 650px){
+
+     #map{
+          height: 350px;
+          width: 350px;
+     }
+}
+    

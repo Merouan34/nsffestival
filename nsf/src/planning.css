@@ -1,0 +1,64 @@
+/* Importation de la police Google */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* Style global pour le fond sombre */
+.bg {
+  background-color: #2b2b2b; /* Fond sombre */
+  padding: 30px;
+ 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombre pour faire ressortir le tableau */
+ 
+}
+
+/* Style de base pour le tableau */
+.table {
+  font-family: '', 'Trebuchet MS', 'Tahoma', sans-serif;
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #ffffff; /* Couleur du texte blanc */
+  border-collapse: collapse;
+  justify-content: left;
+  align-items: left;
+  background-color: #3e3e3e; /* Fond légèrement sombre pour le tableau */
+  border-radius: 10px; /* Coins arrondis du tableau */
+  overflow: hidden; /* Cache tout dépassement */
+}
+
+/* Bordure du tableau */
+.table th,
+.table td {
+  padding: 1rem; /* Plus d'espace entre les cellules */
+  vertical-align: middle;
+  border-top: 1px solid #565656; /* Bordure plus claire pour le contraste */
+}
+
+/* Style des en-têtes du tableau */
+.table thead th {
+  text-align: left;
+  font-size: 1.2em;
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+  background-color: #484848; /* Fond sombre pour les en-têtes */
+  color: #ffffff; /* Couleur du texte des en-têtes */
+}
+
+/* Lignes du tableau rayées (striped) */
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Effet de survol (hover) sur les lignes */
+.table-hover tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Couleur de survol */
+}
+
+/* Style du texte pour les jours */
+.jour {
+  font-family: 'Candara', 'Trebuchet MS', 'Tahoma', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 2.5em;
+  margin: 0;
+  padding: 10px;
+  color: #ffffff; /* Couleur du texte blanche pour contraster avec le fond sombre */
+}

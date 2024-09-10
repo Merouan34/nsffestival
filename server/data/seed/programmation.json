@@ -1,0 +1,58 @@
+[
+    {
+      "artistId": 4,
+      "nomArtist": "VII",
+      "descriptionArtist": "VII est un rappeur à la plume aiguisée et au flow unique, combinant des textes profonds avec des rythmes urbains percutants. Son style conscient aborde des thèmes sociaux et personnels, touchant l'âme de ses auditeurs.",
+      "Img": "https://festivalnsf.fr/wp-content/uploads/2024/04/artiste14.jpg",
+      "typeMusique": "Rap"
+    },
+    {
+      "artistId": 6,
+      "nomArtist": "Funky Grooves",
+      "descriptionArtist": "Funky Grooves fait revivre la magie des années 70 avec une musique pleine d'énergie et de rythme. Leur groove funky est irrésistible, alliant basse percutante, cuivres éclatants et mélodies entraînantes pour vous faire danser toute la nuit.",
+      "Img": "https://festivalnsf.fr/wp-content/uploads/2024/04/artiste1-1.jpg",
+      "typeMusique": "Funk"
+    },
+    {
+      "artistId": 9,
+      "nomArtist": "Jack",
+      "descriptionArtist": "Jack est un rocker passionné, apportant une énergie brute et une intensité électrisante à chaque performance. Avec ses riffs puissants et ses paroles rebelles, il incarne l'esprit du rock'n'roll et captive son public.",
+      "Img": "https://festivalnsf.fr/wp-content/uploads/2024/04/artiste11.jpg",
+      "typeMusique": "Rock"
+    },
+    {
+      "artistId": 10,
+      "nomArtist": "Classic Music",
+      "descriptionArtist": "Classic Music vous transporte dans un voyage à travers le temps avec une interprétation sublime des œuvres classiques. Leur virtuosité et leur passion pour la musique classique touchent l'âme et inspirent à chaque note.",
+      "Img": "https://festivalnsf.fr/wp-content/uploads/2024/04/artiste15.jpg",
+      "typeMusique": "Classique"
+    },
+    {
+      "artistId": 12,
+      "nomArtist": "René et Benoit",
+      "descriptionArtist": "René et Benoit sont un duo de rappeurs captivants, mêlant des paroles incisives et un flow innovant pour créer un son unique. Leur musique explore les réalités de la vie moderne avec une authenticité brute et un rythme contagieux.",
+      "Img": "https://festivalnsf.fr/wp-content/uploads/2024/04/artiste9.png",
+      "typeMusique": "Rap"
+    },
+    {
+      "artistId": 13,
+      "nomArtist": "Fred",
+      "descriptionArtist": "Fred apporte une touche personnelle au rock avec des compositions originales et des performances intenses. Sa musique est une fusion de riffs accrocheurs et de paroles introspectives, capturant l'essence du rock moderne.",
+      "Img": "https://festivalnsf.fr/wp-content/uploads/2024/04/artiste5.jpg",
+      "typeMusique": "Rock"
+    },
+    {
+      "artistId": 14,
+      "nomArtist": "DiJi",
+      "descriptionArtist": "DiJi est un groupe funk incontournable, délivrant des performances vibrantes avec une section rythmique explosive et des mélodies qui groovent. Leur son vous invite à lâcher prise et à vous immerger dans le plaisir pur de la danse.",
+      "Img": "https://festivalnsf.fr/wp-content/uploads/2024/04/artiste10.jpg",
+      "typeMusique": "Funk"
+    },
+    {
+      "artistId": 15,
+      "nomArtist": "Batrick Pruel",
+      "descriptionArtist": "Batrick Pruel est un virtuose de la musique classique, interprétant avec émotion et précision les grands chefs-d'œuvre du répertoire. Sa passion et son talent apportent une nouvelle dimension à chaque performance, captivant les amateurs de musique classique.",
+      "Img": "https://festivalnsf.fr/wp-content/uploads/2024/04/artiste7.jpg",
+      "typeMusique": "Classique"
+    }
+  ]

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    
+    <!-- Page d'accueil -->
+    <url>
+        <loc>https://ftl.festivalnsf.fr/</loc>
+        <lastmod>2024-05-25</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    
+    <!-- Programme du festival -->
+    <url>
+        <loc>https://ftl.festivalnsf.fr/prog</loc>
+        <lastmod>2024-05-22</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    
+    <!-- Page de billetterie -->
+    <url>
+        <loc>https://ftl.festivalnsf.fr/billetterie</loc>
+        <lastmod>2024-05-24</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    
+    <!-- Page des sponsors -->
+    <url>
+        <loc>https://ftl.festivalnsf.fr/partenaires</loc>
+        <lastmod>2024-05-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Page d'informations pratiques -->
+    <url>
+        <loc>https://ftl.festivalnsf.fr/faq</loc>
+        <lastmod>2024-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Page du planning -->
+    <url>
+        <loc>https://ftl.festivalnsf.fr/planning</loc>
+        <lastmod>2024-05-24</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+</urlset>

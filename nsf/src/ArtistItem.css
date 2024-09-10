@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body.active-modal {
+    overflow-y: hidden;
+}
+
+.btn-modal {
+    padding: 10px 20px;
+    display: block;
+    margin: 100px auto 0;
+    font-size: 18px;
+}
+
+.modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    
+}
+.modal{
+    z-index: 4;
+    
+}
+.overlay {
+    background: rgba(0,0,0,0.8);
+}
+
+.close-modal {
+    position: absolute;
+    border:none;
+    bottom: 10px;
+    right: 10px;
+    color: red;
+}
+.close-modal:hover{
+    transform: scale(1.3);
+    transition: 0.05s linear;
+    cursor: pointer;
+}
+
+.infoimgcard{
+    width: 400px;
+    height: 400px;
+    
+    object-fit: cover; 
+}
+
+.modal-content{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: absolute;
+    top: -200%;
+    left: 50%;
+    line-height: 1.4;
+    background: #f1f1f1;
+    padding: 0%;
+    max-width: 800px;
+    min-width: 300px;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+    transition: top 1000ms ease-in-out,;
+}
+
+.modal-content>ul{
+    font-style: var(--color-black);
+    text-align: center;
+    font-family: var(--font-alt);
+    font-size: 100%;
+    list-style: none;
+    padding: 0.1rem;
+    opacity: 0;
+    
+    
+}
+
+.modal-content> img{
+    top:10px;
+    opacity: 0;
+    
+}
+.modal-content.active{
+    
+    opacity: 1;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    transition: 300ms cubic-bezier(0.19, 0.89, 0.43, 1.09);
+
+}
+.modal-content.active> img{
+    top:0px;
+    opacity: 1;
+    transition: all 200ms ease-in-out 300ms;
+    
+}
+
+.modal-content.active>ul{
+    top:0px;
+    opacity: 1;
+    transition: all 200ms ease-in-out 650ms;
+}
+.modal-content.active>ul>li{
+    top:0px;
+    opacity: 1;
+    transition: all 200ms ease-in-out 850ms;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------- */
+.ghost{
+    display: none;
+}
+.select{
+    margin: 2rem;
+    padding: 1em;
+    text-align: center;
+    font-family: var(--font-alt);
+    font-weight: bolder;
+}
+.card{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    border: solid;
+    border:rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);;
+      
+}
+.flexcard{
+    text-align: center;
+    padding-bottom: 2rem;
+}
+
+.artistcard{
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    list-style: none;
+     
+}
+
+.imgcard{
+    width: 333px;
+    height: 333px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: 0.05s linear;
+    cursor: pointer;
+    padding: 2rem;
+    
+}
+.imgcard>ul{
+    display: none;
+}
+.imgcard:hover{
+   transform: scale(1.1);
+}
+/* Conteneur pour le sélecteur */
+.dropdown-container {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    margin: 10px; /* Espacement autour du conteneur */
+}
+
+
+
+.dropdown-select {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px; /* Taille de la police */
+    color: #ffffff; /* Couleur du texte */
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.4); /* Fond sombre et semi-transparent */
+    border: 1px solid rgba(0, 0, 0, 0.2); /* Bordure douce */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 10px; /* Espacement interne */
+    width: 100%; /* Prend toute la largeur disponible */
+    max-width: 300px; /* Largeur maximale pour les écrans plus larges */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Ombre douce */
+    appearance: none; /* Supprime l'apparence par défaut du sélecteur */
+}
+
+/* Style pour les options du sélecteur */
+.dropdown-option {
+    font-family: 'Poppins', sans-serif;
+    background-color: rgba(0, 0, 0, 0.4); /* Fond sombre et semi-transparent */
+    color: #fff; /* Couleur du texte */
+}
+
+/* Style pour l'élément sélectionné au survol */
+.dropdown-select:focus {
+    border-color: #007bff; /* Couleur de la bordure au focus */
+    outline: none; /* Supprime l'indicateur de focus par défaut */
+}
+
+@media screen and (min-width: 2000px){
+
+}
+
+@media screen and (max-width: 1150px){
+    
+    .imgcard{
+        width: 250px;
+        height: 250px;
+        
+    }
+    .artistcard{
+        font-size: 50% ;
+    }
+    .infoimgcard{
+        width: 250px;
+        height: 250px;
+        }
+}
+
+@media screen and (max-width: 650px){
+
+
+    .infoimgcard{
+    width: 180px;
+    height: 180px;
+    }
+    .imgcard{
+        width:240px;
+        height: 240px;
+        
+    }
+}

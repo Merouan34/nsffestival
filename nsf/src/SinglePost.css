@@ -1,0 +1,61 @@
+.post{
+    list-style: none;
+    text-align: left;
+    padding-left: 5%;
+    margin: 5%;
+}
+.posttitle
+{
+    padding-bottom: 5%;
+}
+
+.postdescription{
+    padding: 2%;
+    margin-top: 5%;
+}
+
+    @media screen and (max-width: 2000px){
+        .post{
+            width: 400px;
+            }
+            .post{
+                font-size: 90%;
+                margin: 3%; 
+            }
+            .postdescription{
+                font-size: 100%
+            }
+    }
+    
+    @media screen and (max-width: 1150px){
+        .post{
+        width: 200px;
+        }
+        .postdescription{
+            font-size: 70%
+        }
+        .post{
+            font-size: 60%;
+            margin: 3%;
+            
+        }
+    }
+    
+    @media screen and (max-width: 650px){
+    
+    .posttitle
+    {
+    padding-bottom: 10%;
+    font-size: 100%;
+    }
+    .postdescription{
+        font-size: 50%
+    }
+    .post{
+        font-size: 80%;
+        margin: 3%;
+        
+    }
+      
+    }
+    

@@ -1,0 +1,134 @@
+/* adminControl.css */
+
+/* Style de base pour toute la page d'administration */
+.admin-control {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Titre principal de la page */
+  .admin-control h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 28px;
+  }
+  
+  /* Sections de la page */
+  .admin-control section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Titres des sections */
+  .admin-control h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Liste d'éléments (Artistes, Utilisateurs, etc.) */
+  .admin-control ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .admin-control ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Style des boutons */
+  .admin-control button {
+    padding: 8px 12px;
+    margin: 5px;
+    font-size: 14px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-control button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Formulaires d'ajout et de modification */
+  .admin-control input[type="text"] {
+    width: calc(100% - 24px);
+    padding: 8px;
+    margin: 8px 0;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  /* Formulaire de modification */
+  .edit-form {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Bouton d'enregistrement ou d'annulation de modification */
+  .edit-form button {
+    padding: 8px 12px;
+    margin: 5px;
+    font-size: 14px;
+    color: white;
+    background-color: #28a745;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit-form button:hover {
+    background-color: #218838;
+  }
+  .admin-control {
+    padding: 20px;
+  }
+  /* Conteneur Flex pour les colonnes */
+.admin-content {
+  display: flex; /* Utilisation de Flexbox pour créer les colonnes */
+  gap: 20px; /* Espace entre les colonnes */
+  align-items: stretch; /* Alignement des éléments pour les faire occuper la même hauteur */
+  height: 100%; /* S'assure que le conteneur occupe toute la hauteur disponible */
+}
+
+/* Colonne des données des artistes */
+.artist-data {
+  flex: 1; /* Prend 1 partie de l'espace disponible */
+  border-right: 1px solid #ddd; /* Ligne de séparation */
+  padding-right: 20px; /* Marge intérieure droite */
+  display: flex; /* Utilisation de Flexbox pour contenu interne */
+  flex-direction: column; /* Organisation du contenu en colonne */
+  height: 100%; /* S'assurer que la hauteur occupe tout l'espace disponible */
+}
+
+/* Colonne du formulaire d'artistes */
+.artist-form {
+  flex: 1; /* Prend 1 partie de l'espace disponible */
+  display: flex; /* Utilisation de Flexbox pour contenu interne */
+  flex-direction: column; /* Organisation du contenu en colonne */
+  height: 100%; /* S'assurer que la hauteur occupe tout l'espace disponible */
+}

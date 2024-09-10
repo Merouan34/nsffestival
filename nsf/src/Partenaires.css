@@ -1,0 +1,94 @@
+/* Conteneur principal du composant Partenaires */
+.partenaires-container {
+    font-family: 'Candara', 'Trebuchet MS', 'Tahoma', sans-serif;
+    padding: 20px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Liste des partenaires */
+  .partenaires-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Carte d'un partenaire */
+  .partenaire-card {
+    display: flex;
+    align-items: center;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #1e1e1e; /* Fond de la carte */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .partenaire-card:hover {
+    background-color: #333; /* Couleur de fond au survol */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+  }
+  
+  /* Logo du partenaire */
+  .partenaire-logo {
+    width: 80px; /* Taille du logo */
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  /* Informations du partenaire */
+  .partenaire-info {
+    flex: 1;
+  }
+  
+  .partenaire-info h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #ffffff; /* Couleur du titre */
+  }
+  
+  .partenaire-info p {
+    margin: 5px 0 0;
+    color: #b0b0b0; /* Couleur de la description */
+  }
+  
+  /* Styles responsives */
+  @media (max-width: 768px) {
+    .partenaire-card {
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: center;
+    }
+  
+    .partenaire-logo {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  
+    .partenaire-info {
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .partenaire-card {
+      padding: 10px;
+    }
+  
+    .partenaire-logo {
+      width: 60px;
+      height: 60px;
+    }
+  
+    .partenaire-info h2 {
+      font-size: 1.2em;
+    }
+  
+    .partenaire-info p {
+      font-size: 0.9em;
+    }
+  }
+  

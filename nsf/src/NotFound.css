@@ -1,0 +1,77 @@
+.errorstyle{
+    display: block;
+    background-color: rgba(0, 0, 0, 0.8);
+    font-family: var(--font-alt);
+    color: var(--color-white);
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    
+    
+}
+.errortitle{
+    text-align: center;
+    font-size: 400%;
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+}
+.error{
+    text-align: center;
+    font-size: 1600%;
+    font-weight: lighter;
+    letter-spacing: 1rem;
+}
+.home_button{
+    width: 30%;
+    height: 100px;
+    background-color: rgba(255,255,255, 0.8);
+    color: green;
+    font-family: var(--font-alt);
+    font-weight: 700;
+    font-size: 40px;
+    border-radius: 15px;
+    border: solid;
+    outline: none;
+    cursor: pointer;
+    transition: 0.1s;
+  }
+  @media screen and (min-width: 2000px){
+
+  }
+  
+  @media screen and (max-width: 1150px){
+      
+  }
+  
+  @media screen and (max-width: 650px){
+  
+    .error{
+        font-size: 300%;
+        font-weight: lighter;
+        letter-spacing: 0;
+    }
+    .errortitle{
+        font-size: 100%;
+        text-align: center;
+        
+    }
+    .errorstyle{
+        background-color: rgba(0, 0, 0, 0.8);
+        text-align: center;
+        font-family: var(--font-alt);
+        color: var(--color-white)
+    }
+    .home_button{
+        height: 150%;
+        background-color: rgba(255,255,255, 0.8);
+        color: green;
+        font-family: var(--font-alt);
+        font-weight: 700;
+        font-size: 100%;
+        border-radius: 15px;
+        border: solid;
+        cursor: pointer;
+        transition: 0.1s;
+      }
+  }
+  

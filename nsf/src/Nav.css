@@ -1,0 +1,48 @@
+/* Style de la barre de navigation */
+.navigation-bar {
+    
+    display: flex;
+    justify-content: flex-end; /* Place le bouton à droite */
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.8); /* Couleur de fond sombre */
+  }
+  
+  /* Style du bouton de navigation */
+  .navigation-button {
+    font-family: 'Candara', 'Trebuchet MS', 'Tahoma', sans-serif;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Couleur de fond vert */
+    color: #000000; /* Couleur du texte */
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Animation douce */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* Ombre du bouton */
+  }
+  
+  /* Effet de survol pour le bouton */
+  .navigation-button:hover {
+    background-color: #45a049; /* Couleur verte plus foncée au survol */
+    transform: translateY(-2px); /* Léger déplacement vers le haut au survol */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Accentuation de l'ombre au survol */
+  }
+  
+  /* Effet pour le mode sombre sur appareils mobiles */
+  @media (prefers-color-scheme: dark) {
+    .navigation-bar {
+      color: #000000; /* Couleur du texte */
+      background-color: var(--color-gray); /* Ajuste la couleur de fond en mode sombre */
+    }
+    
+    .navigation-button {
+      background-color: #fc3200; /* Bouton bleu en mode sombre */
+      color: #000000; /* Couleur du texte */
+    }
+    
+    .navigation-button:hover {
+      background-color: #ee6e47; /* Ajuste la couleur de survol en mode sombre */
+    }
+  }
+  

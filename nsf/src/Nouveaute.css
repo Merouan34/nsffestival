@@ -1,0 +1,102 @@
+/* Nouveaute.css */
+
+/* Style de base pour le conteneur */
+.nouveaute-container {
+    background-color: rgba(0, 0, 0, 0); /* Fond sombre pour le conteneur principal */
+    color: #000000; /* Texte clair */
+    width: 100%;
+    box-sizing: border-box; /* Prendre toute la largeur de l'écran */
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Titre de la section */
+  .nouveaute-title {
+    font-family: 'Candara', 'Trebuchet MS', 'Tahoma', sans-serif;
+    color: var(--color-black);
+    font-size: 3em;
+    margin: 30px;
+    font-weight: bold;
+ 
+  }
+  
+  /* Conteneur pour le slider */
+  .nouveaute-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden; /* Cache les scrollbars */
+    max-width: 100%;
+  }
+  
+  /* Style des flèches de navigation */
+  .slider-arrow {
+    background-color: transparent;
+    border: none;
+    color:var(--color-black);
+    font-size: 300%;
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bolder;
+ 
+    
+  }
+  
+  .slider-arrow.left {
+    left: 20%;
+  }
+  
+  .slider-arrow.right {
+    right: 20%;
+  }
+  
+  .slider-arrow:hover {
+    color: #66aaff;
+  }
+  
+  /* Style pour chaque élément de nouveauté */
+  .nouveaute-item {
+    width: 40%;
+    height: 80px;
+    background-color: rgba(0, 0, 0, 0.1); /* Remplacez par la couleur désirée */
+    color: var(--color-black); /* Remplacez par la couleur désirée */
+    font-family: var(--font-alt); /* Assurez-vous que cette variable est définie */
+    font-weight: 100;
+    line-height: 38px;
+    font-size: 15px;
+    margin: 0.5rem 1.5rem;
+    border-radius: 15px;
+    border: solid;
+    outline: none;
+    cursor: pointer;
+    transition: 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Ajout d'un effet de survol */
+  .nouveaute-item:hover {
+
+    color: var(--color-black);
+    transform: scale(1.02);
+  }
+  
+  .nouveaute-item-title {
+    font-size: 1.5em;
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  .nouveaute-item-description {
+    font-size: 1em;
+    color: #e0e0e0;
+  }
+  

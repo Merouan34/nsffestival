@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* Conteneur principal pour le filtre */
+.select-box-container {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center; /* Centre les éléments horizontalement */
+    padding: 15px 20px; /* Ajoute du padding pour espacer le contenu */
+    background-color: rgba(0, 0, 0, 0.8); /* Fond gris sombre avec transparence */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Ombre douce pour donner de la profondeur */
+    backdrop-filter: blur(10px); /* Effet de flou derrière pour une touche moderne */
+    max-width: 100%; /* S'étend à la largeur complète */
+    box-sizing: border-box; /* Inclut le padding dans la largeur totale */
+    margin: 0 auto; /* Centre le conteneur horizontalement */
+}
+
+/* Conteneur pour les checkboxes et labels */
+.checkbox-wrapper {
+    display: flex;
+    flex-wrap: wrap; /* Permet de passer à la ligne si l'espace est insuffisant */
+    gap: 15px; /* Espacement entre les éléments */
+    padding: 15px; /* Ajoute du padding à l'intérieur du rectangle */
+    background-color: rgba(255, 255, 255, 0.2); /* Fond plus clair que le conteneur principal */
+    border-radius: 8px; /* Coins arrondis pour le rectangle */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombre douce pour donner de la profondeur */
+}
+
+/* Style pour chaque label de checkbox */
+.checkbox-wrapper label {
+    display: flex;
+    align-items: center;
+    cursor: pointer; /* Change le curseur au survol */
+    font-size: 16px;
+    transition: color 0.3s ease, transform 0.2s; /* Transition douce pour la couleur et l'effet de survol */
+    padding: 10px 15px; /* Ajoute de l'espace intérieur */
+    border-radius: 4px; /* Coins légèrement arrondis pour une touche moderne */
+}
+
+/* Style pour les checkboxes */
+.checkbox-wrapper input[type="checkbox"] {
+    margin-right: 10px; /* Espace entre la checkbox et le label */
+    width: 18px;
+    height: 18px;
+    accent-color: #ff6600; /* Couleur principale de la checkbox */
+    cursor: pointer;
+    transition: transform 0.2s; /* Transition douce pour un effet de clic */
+}
+
+/* Effet de survol pour les labels */
+.checkbox-wrapper label:hover {
+    color: #ff6600; /* Changer la couleur au survol */
+    background-color: rgba(255, 102, 0, 0.1); /* Fond léger au survol */
+    transform: translateY(-2px); /* Effet de survol qui soulève légèrement le label */
+}
+
+/* Effet de survol et de focus pour les checkboxes */
+.checkbox-wrapper input[type="checkbox"]:hover,
+.checkbox-wrapper input[type="checkbox"]:focus {
+    outline: none;
+    transform: scale(1.1); /* Agrandit légèrement la checkbox au survol */
+    box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.25); /* Ombre autour de la checkbox */
+}
