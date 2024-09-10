@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server/server.js",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run client\" \"npm run start\""
+    "dev": "concurrently \"npm run client\" \"npm run start\"",
+    "build": "cd ../nsf && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
