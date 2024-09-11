@@ -1,5 +1,6 @@
 // server.js
 const express = require('express');
+
 const path = require('path');
 const { connectDB } = require('./config/db');
 const artistRoutes = require('./routes/artists');
@@ -53,7 +54,7 @@ app.get('*', (req, res) => {
 connectDB()
   .then(() => {
     app.listen(PORT, () => {
-      console.log(`Serveur en cours d'exécution sur http://localhost:${PORT}`);
+      console.log(`${PORT}`);
     });
   })
   .catch(err => {

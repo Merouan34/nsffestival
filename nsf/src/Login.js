@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ReCAPTCHA from 'react-google-recaptcha'; // Importer le composant reCaptcha
+import ReCAPTCHA from 'react-google-recaptcha';
 import './Account.css';
 
 const apiUrl = process.env.REACT_APP_API_URL;
-const REACT_APP_RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY; // Clé du site reCaptcha
+const REACT_APP_RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY; 
 
 // Fonction pour vérifier la connexion et rediriger si nécessaire
 const checkAuth = (navigate) => {
@@ -27,7 +27,6 @@ class Login extends Component {
       email: '',
       password: '',
       message: '',
-      recaptchaToken: '' // Ajout d'un état pour le token reCaptcha
     };
   }
 
@@ -40,25 +39,15 @@ class Login extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleRecaptchaChange = (token) => {
-    this.setState({ recaptchaToken: token });
-  };
-
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { email, password, recaptchaToken } = this.state;
-
-    // Vérifier que le token reCaptcha est présent
-    if (!recaptchaToken) {
-      this.setState({ message: 'Veuillez vérifier que vous n\'êtes pas un robot.' });
-      return;
-    }
+    const { email, password } = this.state;
 
     try {
       const response = await fetch(`${apiUrl}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password, recaptchaToken }) // Envoyer le token reCaptcha
+        body: JSON.stringify({ email, password })
       });
 
       const data = await response.json();
@@ -70,7 +59,7 @@ class Login extends Component {
         localStorage.setItem('username', data.username); // Stocker le nom d'utilisateur
 
         // Redirection basée sur le statut d'admin
-        if (data.admin == 1) {
+        if (data.admin === 1) {
           this.props.navigate('/admin-accueil');
         } else {
           this.props.navigate('/user-control');
@@ -94,15 +83,14 @@ class Login extends Component {
 
             <label htmlFor="password">Mot de passe</label>
             <input type="password" id="password" name="password" onChange={this.handleChange} required />
-
-            {/* Ajouter le composant ReCAPTCHA */}
             <ReCAPTCHA
-              sitekey={REACT_APP_RECAPTCHA_SITE_KEY}
-              onChange={this.handleRecaptchaChange}
+              sitekey={REACT_APP_RECAPTCHA_SITE_KEY} // Remplace par ta clé de site reCaptcha
+              onChange={this.handleCaptchaChange}
             />
-
             <input type="submit" value="Se connecter" />
+            
           </form>
+         
           {this.state.message && <p>{this.state.message}</p>}
           <a href="/register">Créer un compte</a>
         </div>
