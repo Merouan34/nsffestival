@@ -11,8 +11,7 @@ const urgentRoutes = require('./routes/urgentRoutes');
 const newsRoutes = require('./routes/newsRoutes'); // Assurez-vous que le chemin du fichier est correct
 const userRoutes = require('./routes/usersRoutes');
 const partenaireRoutes = require('./routes/partenaireRoutes')
-
-
+const helmet = require('helmet');
 // Utiliser les routes
 
 const app = express();
@@ -24,7 +23,7 @@ const corsOptions = {
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
-
+app.use(helmet());
 // Appliquer le middleware CORS avec les options configurées
 app.use(cors(corsOptions));
 

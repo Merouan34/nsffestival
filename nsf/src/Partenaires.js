@@ -42,11 +42,7 @@ export default class Partenaires extends Component {
   };
     render() {
       const { partenaires, loading, error } = this.state;
-
-      if (loading) return <p>Chargement des partenaires...</p>;
-      if (error) return <p>{error}</p>;
   
-    console.log()
     return (
       <>
       <Entete titre='Nos partenaires'/>

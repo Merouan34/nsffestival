@@ -51,21 +51,21 @@ class SinglePost extends Component {
     
         const onClick = this.props;
         const media = this.state.media;
-        
+       
     
     return(
 
             <div>
-                {media.length && (media.map(media => (
-                    
-                        <div id={media._id+'s'}>
+                {media.length && (media.map(media=> (
+                        
+                        <div key={media._id} id={media._id+'s'}>
                             <h2 className='posttitle'>{media.nomArtist}</h2>
                         <ul className='post'>
-                            <li>{media.typeMusique}</li>
+                            <li >{media.typeMusique}</li>
                         </ul>
                             <p className='postdescription'>{media.descriptionArtist}</p>
-                        </div> 
-                    
+                         
+                        </div>
                     )))}
         </div >
 );

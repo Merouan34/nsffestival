@@ -37,7 +37,7 @@
   text-align: left;
   font-size: 1.2em;
   vertical-align: bottom;
-  border-bottom: 2px solid #dee2e6;
+  border-bottom: 2px solid #c06d01;
   background-color: #484848; /* Fond sombre pour les en-têtes */
   color: #ffffff; /* Couleur du texte des en-têtes */
 }
@@ -60,5 +60,5 @@
   font-size: 2.5em;
   margin: 0;
   padding: 10px;
-  color: #ffffff; /* Couleur du texte blanche pour contraster avec le fond sombre */
+  color: #cf4c00; /* Couleur du texte blanche pour contraster avec le fond sombre */
 }

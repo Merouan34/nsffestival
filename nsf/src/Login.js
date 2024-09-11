@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ReCAPTCHA from 'react-google-recaptcha'; // Importer le composant reCaptcha
 import './Account.css';
+
 const apiUrl = process.env.REACT_APP_API_URL;
+const RECAPTCHA_SITE_KEY_REACT = process.env.RECAPTCHA_SITE_KEY; // Clé du site reCaptcha
 
 // Fonction pour vérifier la connexion et rediriger si nécessaire
 const checkAuth = (navigate) => {
@@ -24,43 +27,41 @@ class Login extends Component {
       email: '',
       password: '',
       message: '',
-      admin: null
+      recaptchaToken: '' // Ajout d'un état pour le token reCaptcha
     };
   }
-  componentDidMount() {
-    const token = localStorage.getItem('token');
-    const userType = localStorage.getItem('userType');
 
-    if (token) {
-      // Redirection basée sur le type d'utilisateur stocké
-      if (userType == 'admin') {
-        this.props.navigate('/admin-accueil');
-      } else {
-        this.props.navigate('/user-control');
-      }
-    }
-  }
   componentDidMount() {
     // Vérifier la connexion lorsque le composant se monte
     checkAuth(this.props.navigate);
   }
+
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  handleRecaptchaChange = (token) => {
+    this.setState({ recaptchaToken: token });
+  };
+
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { email, password } = this.state;
+    const { email, password, recaptchaToken } = this.state;
+
+    // Vérifier que le token reCaptcha est présent
+    if (!recaptchaToken) {
+      this.setState({ message: 'Veuillez vérifier que vous n\'êtes pas un robot.' });
+      return;
+    }
 
     try {
       const response = await fetch(`${apiUrl}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, password, recaptchaToken }) // Envoyer le token reCaptcha
       });
 
       const data = await response.json();
-    
 
       if (response.ok) {
         this.setState({ message: 'Connexion réussie.' });
@@ -79,7 +80,6 @@ class Login extends Component {
       }
     } catch (error) {
       this.setState({ message: 'Erreur lors de la connexion.' });
-     
     }
   };
 
@@ -95,6 +95,12 @@ class Login extends Component {
             <label htmlFor="password">Mot de passe</label>
             <input type="password" id="password" name="password" onChange={this.handleChange} required />
 
+            {/* Ajouter le composant ReCAPTCHA */}
+            <ReCAPTCHA
+              sitekey="6LdmZD4qAAAAAJSS_VBIhLIOVnJLXrC1QX7oJAXa"
+              onChange={this.handleRecaptchaChange}
+            />
+
             <input type="submit" value="Se connecter" />
           </form>
           {this.state.message && <p>{this.state.message}</p>}
@@ -104,7 +110,9 @@ class Login extends Component {
     );
   }
 }
+
 const withNavigation = (Component) => {
   return (props) => <Component {...props} navigate={useNavigate()} />;
 };
-export default withNavigation(Login); 
+
+export default withNavigation(Login);

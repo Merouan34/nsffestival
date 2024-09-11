@@ -80,6 +80,7 @@ class SingleImage extends Component {
                     media.length && (media.map(media => (
                         
                         <img
+                            key={media._id}
                             id={media._id}
                             className='imgcard'
                             src={media.Img}

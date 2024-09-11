@@ -1,29 +1,83 @@
 import React, { Component } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import './Account.css';
 
 const apiUrl = process.env.REACT_APP_API_URL;
-  
+const RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY; // Utiliser la clé du site ici
 class Register extends Component {
   state = {
     name: '',
     email: '',
     password: '',
-    message: ''
+    confirmPassword: '',
+    passwordError: '',
+    confirmPasswordError: '',
+    message: '',
+    recaptchaToken: '', // Stocke le token reCaptcha
   };
 
   handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    this.setState({ [name]: value }, () => {
+      if (name === 'password') {
+        this.validatePassword(value);
+      }
+      if (name === 'confirmPassword') {
+        this.validateConfirmPassword(value);
+      }
+    });
+  };
+
+  validatePassword = (password) => {
+    const minLength = 8;
+    const hasNumber = /\d/;
+    const hasUpperCase = /[A-Z]/;
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/;
+
+    let passwordError = '';
+
+    if (password.length < minLength) {
+      passwordError = 'Le mot de passe doit contenir au moins 8 caractères.';
+    } else if (!hasNumber.test(password)) {
+      passwordError = 'Le mot de passe doit contenir au moins un chiffre.';
+    } else if (!hasUpperCase.test(password)) {
+      passwordError = 'Le mot de passe doit contenir au moins une lettre majuscule.';
+    } else if (!hasSpecialChar.test(password)) {
+      passwordError = 'Le mot de passe doit contenir au moins un caractère spécial.';
+    }
+
+    this.setState({ passwordError }, () => {
+      this.validateConfirmPassword(this.state.confirmPassword);
+    });
+  };
+
+  validateConfirmPassword = (confirmPassword) => {
+    const { password } = this.state;
+    let confirmPasswordError = '';
+
+    if (confirmPassword && password !== confirmPassword) {
+      confirmPasswordError = 'Les mots de passe ne correspondent pas.';
+    }
+
+    this.setState({ confirmPasswordError });
+  };
+
+  handleCaptchaChange = (token) => {
+    // Met à jour l'état avec le token reCaptcha
+    this.setState({ recaptchaToken: token });
   };
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, email, password } = this.state;
+    const { name, email, password, passwordError, confirmPasswordError, recaptchaToken } = this.state;
+
+    if (passwordError || confirmPasswordError) return;
 
     try {
       const response = await fetch(`${apiUrl}/api/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, password })
+        body: JSON.stringify({ name, email, password, recaptchaToken })
       });
 
       const data = await response.json();
@@ -35,7 +89,6 @@ class Register extends Component {
       }
     } catch (error) {
       this.setState({ message: 'Erreur lors de l\'inscription.' });
-      
     }
   };
 
@@ -52,9 +105,36 @@ class Register extends Component {
             <input type="email" id="email" name="email" onChange={this.handleChange} required />
 
             <label htmlFor="password">Mot de passe</label>
-            <input type="password" id="password" name="password" onChange={this.handleChange} required />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              onChange={this.handleChange}
+              required
+            />
+            {this.state.passwordError && <p className="error">{this.state.passwordError}</p>}
 
-            <input type="submit" value="S'inscrire" />
+            <label htmlFor="confirmPassword">Confirmer le mot de passe</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              onChange={this.handleChange}
+              required
+            />
+            {this.state.confirmPasswordError && <p className="error">{this.state.confirmPasswordError}</p>}
+
+            {/* Composant reCaptcha */}
+            <ReCAPTCHA
+              sitekey="6LdmZD4qAAAAAJSS_VBIhLIOVnJLXrC1QX7oJAXa" // Remplace par ta clé de site reCaptcha
+              onChange={this.handleCaptchaChange}
+            />
+
+            <input
+              type="submit"
+              value="S'inscrire"
+              disabled={!!this.state.passwordError || !!this.state.confirmPasswordError || !this.state.recaptchaToken} // Désactivé si le captcha n'est pas rempli
+            />
           </form>
           {this.state.message && <p>{this.state.message}</p>}
           <a href="/login">Déjà un compte ? Se connecter</a>
