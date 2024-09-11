@@ -5,7 +5,7 @@ const router = express.Router();
 const fetch = require('node-fetch'); // Pour effectuer la requête vers l'API Google reCaptcha
 const UserController = require('../controllers/usersController');
 
-const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY; // Clé secrète reCaptcha
+const REACT_APP_RECAPTCHA_SECRET_KEY = process.env.REACT_APP_RECAPTCHA_SECRET_KEY; // Clé secrète reCaptcha
 
 // Middleware pour vérifier le token reCaptcha
 async function verifyRecaptchaToken(req, res, next) {
@@ -18,11 +18,10 @@ async function verifyRecaptchaToken(req, res, next) {
   try {
     // Effectue une requête POST à l'API reCaptcha pour vérifier le token
     
-    const response = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`, {
+    const response = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${REACT_APP_RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`, {
       method: 'POST'
     });
     const data = await response.json();
-    console.log(response)
     if (!data.success) {
       return res.status(400).json({ message: 'Échec de la vérification reCaptcha. Veuillez réessayer.' });
     }

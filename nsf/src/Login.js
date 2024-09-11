@@ -4,7 +4,7 @@ import ReCAPTCHA from 'react-google-recaptcha'; // Importer le composant reCaptc
 import './Account.css';
 
 const apiUrl = process.env.REACT_APP_API_URL;
-const RECAPTCHA_SITE_KEY_REACT = process.env.RECAPTCHA_SITE_KEY; // Clé du site reCaptcha
+const REACT_APP_RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY; // Clé du site reCaptcha
 
 // Fonction pour vérifier la connexion et rediriger si nécessaire
 const checkAuth = (navigate) => {
@@ -97,7 +97,7 @@ class Login extends Component {
 
             {/* Ajouter le composant ReCAPTCHA */}
             <ReCAPTCHA
-              sitekey="6LdmZD4qAAAAAJSS_VBIhLIOVnJLXrC1QX7oJAXa"
+              sitekey={REACT_APP_RECAPTCHA_SITE_KEY}
               onChange={this.handleRecaptchaChange}
             />
 

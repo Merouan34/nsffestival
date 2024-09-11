@@ -3,7 +3,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { getDb } = require('../config/db');
-const SECRET_KEY = 'votre_clé_secrète';
+const REACT_APP_RECAPTCHA_SECRET_KEY = process.env.REACT_APP_RECAPTCHA_SECRET_KEY; // Clé secrète reCaptcha
 
 // Enregistrement d'un nouvel utilisateur
 exports.registerUser = async (req, res) => {
@@ -55,7 +55,7 @@ exports.loginUser = async (req, res) => {
     }
 
     // Génération d'un token JWT
-    const token = jwt.sign({ userId: user._id, admin: user.admin }, SECRET_KEY, { expiresIn: '1h' });
+    const token = jwt.sign({ userId: user._id, admin: user.admin }, REACT_APP_RECAPTCHA_SECRET_KEY, { expiresIn: '1h' });
 
     res.status(200).json({ message: 'Connexion réussie.', token, admin: user.admin });
   } catch (error) {

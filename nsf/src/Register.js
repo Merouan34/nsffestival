@@ -3,7 +3,8 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import './Account.css';
 
 const apiUrl = process.env.REACT_APP_API_URL;
-const RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY; // Utiliser la clé du site ici
+const REACT_APP_RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY; 
+
 class Register extends Component {
   state = {
     name: '',
@@ -91,7 +92,7 @@ class Register extends Component {
       this.setState({ message: 'Erreur lors de l\'inscription.' });
     }
   };
-
+  
   render() {
     return (
       <div className="containeraccount">
@@ -112,7 +113,7 @@ class Register extends Component {
               onChange={this.handleChange}
               required
             />
-            {this.state.passwordError && <p className="error">{this.state.passwordError}</p>}
+            {this.state.passwordError && <p className="">{this.state.passwordError}</p>}
 
             <label htmlFor="confirmPassword">Confirmer le mot de passe</label>
             <input
@@ -122,11 +123,11 @@ class Register extends Component {
               onChange={this.handleChange}
               required
             />
-            {this.state.confirmPasswordError && <p className="error">{this.state.confirmPasswordError}</p>}
+            {this.state.confirmPasswordError && <p className="">{this.state.confirmPasswordError}</p>}
 
             {/* Composant reCaptcha */}
             <ReCAPTCHA
-              sitekey="6LdmZD4qAAAAAJSS_VBIhLIOVnJLXrC1QX7oJAXa" // Remplace par ta clé de site reCaptcha
+              sitekey={REACT_APP_RECAPTCHA_SITE_KEY} // Remplace par ta clé de site reCaptcha
               onChange={this.handleCaptchaChange}
             />
 
