@@ -36,4 +36,15 @@
   .admin-buttons button:hover {
     background-color: #0056b3;
   }
-  
+  .logout{
+    font-family: 'Poppins', sans-serif;
+    margin: 10px ;
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+    background-color: #ff0000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }

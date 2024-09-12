@@ -2,7 +2,7 @@
 .navigation-bar {
     
     display: flex;
-    justify-content: flex-end; /* Place le bouton à droite */
+    justify-content: center; /* Place le bouton à droite */
     padding: 10px 20px;
     background-color: rgba(0, 0, 0, 0.8); /* Couleur de fond sombre */
   }

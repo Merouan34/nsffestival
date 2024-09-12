@@ -1,4 +1,5 @@
 .app__header {
+    background-color: #e49f0a; /* Couleur de fond de repli */
     background-image: url(./img/bgg.png);
     background-size: 120%;
     background-repeat: no-repeat;
@@ -37,6 +38,8 @@
     text-align: center;
     margin: 0.3rem;
 }
+
+
 
 @media screen and (min-width: 2000px) {
     .app__header-h1 {

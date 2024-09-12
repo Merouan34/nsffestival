@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './AdminControl.css';
 import Breadcrumb from './breadcrumb';
 const apiUrl = process.env.REACT_APP_API_URL;
@@ -7,11 +8,12 @@ class AdminNouveautes extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      username: localStorage.getItem('username') || 'Administrateur',
       news: [], // Liste des nouveautés récupérées
       newNouveaute: {
         titre: '',
         typeNouveaute: '',
-        description: '',
+        descriptionpb: '',
         date: '',
         auteur: '',
       },
@@ -19,7 +21,7 @@ class AdminNouveautes extends Component {
       editingNouveaute: {
         titre: '',
         typeNouveaute: '',
-        description: '',
+        descriptionpb: '',
         date: '',
         auteur: '',
       },
@@ -90,7 +92,7 @@ class AdminNouveautes extends Component {
           newNouveaute: {
             titre: '',
             typeNouveaute: '',
-            description: '',
+            descriptionpb: '',
             date: '',
             auteur: '',
           },
@@ -110,7 +112,7 @@ class AdminNouveautes extends Component {
       editingNouveaute: {
         titre: news.titre,
         typeNouveaute: news.typeNouveaute,
-        description: news.description,
+        descriptionpb: news.descriptionpb,
         date: news.date,
         auteur: news.auteur,
       } 
@@ -140,7 +142,7 @@ class AdminNouveautes extends Component {
           editingNouveaute: {
             titre: '',
             typeNouveaute: '',
-            description: '',
+            descriptionpb: '',
             date: '',
             auteur: '',
           },
@@ -175,8 +177,10 @@ class AdminNouveautes extends Component {
   };
 
   handleLogout = () => {
-    // Logique de déconnexion
-    console.log("Déconnecté");
+    localStorage.removeItem('token');
+    localStorage.removeItem('userType');
+    localStorage.removeItem('username');
+    this.props.navigate('/login');
   };
 
   render() {
@@ -197,7 +201,7 @@ class AdminNouveautes extends Component {
           <ul>
             {news.map((newsItem) => (
               <li key={newsItem._id.$oid}>
-                <strong>{newsItem.titre}</strong> - {newsItem.description} - {newsItem.date} - {newsItem.auteur}
+                <strong>{newsItem.titre}</strong> - {newsItem.descriptionpb} - {newsItem.date} - {newsItem.auteur}
                 <br />
                 <button onClick={() => this.handleEditNews(newsItem)}>Modifier</button>
                 <button onClick={() => this.handleDeleteNews(newsItem._id)}>Supprimer</button>
@@ -225,8 +229,8 @@ class AdminNouveautes extends Component {
           <input
             type="text"
             placeholder="Description"
-            value={newNouveaute.description}
-            onChange={(e) => this.handleInputChange(e, 'description')}
+            value={newNouveaute.descriptionpb}
+            onChange={(e) => this.handleInputChange(e, 'descriptionpb')}
             required
           />
           <input
@@ -265,8 +269,8 @@ class AdminNouveautes extends Component {
               <input
                 type="text"
                 placeholder="Description"
-                value={editingNouveaute.description}
-                onChange={(e) => this.handleEditInputChange(e, 'description')}
+                value={editingNouveaute.descriptionpb}
+                onChange={(e) => this.handleEditInputChange(e, 'descriptionpb')}
                 required
               />
               <input
@@ -293,5 +297,10 @@ class AdminNouveautes extends Component {
     );
   }
 }
+const withNavigation = (Component) => {
+  return (props) => <Component {...props} navigate={useNavigate()} />;
+};
 
-export default AdminNouveautes;
+export default withNavigation(AdminNouveautes);
+
+

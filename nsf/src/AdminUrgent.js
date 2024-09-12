@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './AdminControl.css'; // Assurez-vous que les styles sont bien importés
 import Breadcrumb from './breadcrumb'; // Assurez-vous que le chemin est correct
 const apiUrl = process.env.REACT_APP_API_URL;
@@ -7,6 +8,7 @@ class AdminUrgent extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      username: localStorage.getItem('username') || 'Administrateur',
       urgent: [], // Liste des urgences récupérées
       newUrgent: {
         titre: '',
@@ -168,10 +170,11 @@ class AdminUrgent extends Component {
   };
 
   handleLogout = () => {
-    // Logique de déconnexion
-    console.log("Déconnecté");
+    localStorage.removeItem('token');
+    localStorage.removeItem('userType');
+    localStorage.removeItem('username');
+    this.props.navigate('/login');
   };
-
   render() {
     const { urgent, newUrgent, editingUrgentId, editingUrgent } = this.state;
  
@@ -286,5 +289,9 @@ class AdminUrgent extends Component {
     );
   }
 }
+const withNavigation = (Component) => {
+  return (props) => <Component {...props} navigate={useNavigate()} />;
+};
 
-export default AdminUrgent;
+export default withNavigation(AdminUrgent);
+

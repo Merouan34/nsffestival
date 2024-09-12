@@ -11,6 +11,7 @@
 }
 
 .containeraccount::before {
+  background-color: #e49f0a; /* Couleur de fond de repli */
   content: ''; /* Nécessaire pour les pseudo-éléments */
   position: absolute;
   top: 0;

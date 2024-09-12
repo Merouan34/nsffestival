@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './AdminControl.css'; // Assurez-vous de créer ce fichier CSS pour le style
 import Breadcrumb from './breadcrumb'; // Assurez-vous que ce chemin est correct
 const apiUrl = process.env.REACT_APP_API_URL;
@@ -7,6 +8,7 @@ class AdminPart extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      username: localStorage.getItem('username') || 'Administrateur',
       partenaires: [], // Liste des partenaires récupérés
       newPartenaire: {
         nom: '',
@@ -142,8 +144,10 @@ class AdminPart extends Component {
   };
 
   handleLogout = () => {
-    // Logique de déconnexion
-    console.log("Déconnecté");
+    localStorage.removeItem('token');
+    localStorage.removeItem('userType');
+    localStorage.removeItem('username');
+    this.props.navigate('/login');
   };
 
   render() {
@@ -235,5 +239,9 @@ class AdminPart extends Component {
     );
   }
 }
+const withNavigation = (Component) => {
+  return (props) => <Component {...props} navigate={useNavigate()} />;
+};
 
-export default AdminPart;
+export default withNavigation(AdminPart);
+

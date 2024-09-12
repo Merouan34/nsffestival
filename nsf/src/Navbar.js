@@ -23,7 +23,7 @@ const Navbar = () => {
             <li class="p__opensans"><NavLink to="/planning">Planning</NavLink></li>
             <li class="p__opensans"><NavLink to="/billetterie">Billetterie</NavLink></li>
             <li class="p__opensans"><NavLink to="/carte">Carte</NavLink></li>
-            <li class="p__opensans"><NavLink to="/faq">Foire aux questions</NavLink></li>
+            <li class="p__opensans"><NavLink to="/faq">FAQ</NavLink></li>
             <li class="p__opensans"><NavLink to="/partenaires">Partenaires</NavLink></li>
             <li class="p__opensans"><NavLink to="/actu">Actualité</NavLink></li>
         </ul>

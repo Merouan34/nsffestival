@@ -6,9 +6,10 @@
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(248, 215, 218, 0.9); /* Fond avec transparence pour attirer l'attention */
+  background-color: rgba(248, 215, 218, 0.8); /* Fond avec transparence pour attirer l'attention */
   color: #721c24;
   padding: 20px;
+  padding-inline: 80px;
   border: 2px solid #721c24; /* Bordure fine et marquée */
   border-radius: 8px;
   display: flex;

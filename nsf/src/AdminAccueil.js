@@ -1,42 +1,61 @@
 // AdminAccueil.js
-import React from 'react';
+import React, { Component } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AdminAccueil.css';
 
-const AdminAccueil = () => {
-  const navigate = useNavigate();
+class AdminAccueil extends Component {
+  // Utiliser le constructeur pour initialiser `this.props`
+  constructor(props) {
+    super(props);
+  }
 
   // Fonction pour rediriger vers AdminControl.js
-  const goToAdminControl = () => {
-    navigate('/admin-control');
+  goToAdminControl = () => {
+    this.props.navigate('/admin-control');
   };
 
   // Fonction pour rediriger vers Nouveautes.js
-  const goToNouveautes = () => {
-    navigate('/admin-nouveautes');
+  goToNouveautes = () => {
+    this.props.navigate('/admin-nouveautes');
   };
 
   // Fonction pour rediriger vers Urgent.js
-  const goToUrgent = () => {
-    navigate('/admin-urgent');
+  goToUrgent = () => {
+    this.props.navigate('/admin-urgent');
   };
 
   // Fonction pour rediriger vers Partenaires.js
-  const goToPartenaires = () => {
-    navigate('/admin-part');
+  goToPartenaires = () => {
+    this.props.navigate('/admin-part');
   };
 
-  return (
-    <div className="admin-home">
-      <h1>Bienvenue dans l'espace administrateur</h1>
-      <div className="admin-buttons">
-        <button onClick={goToAdminControl}>Modifier les Artistes</button>
-        <button onClick={goToNouveautes}>Modifier les Nouveautés</button>
-        <button onClick={goToUrgent}>Modifier les Actualités Urgentes</button>
-        <button onClick={goToPartenaires}>Modifier les Partenaires</button>
+  // Fonction pour gérer la déconnexion
+  handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userType');
+    localStorage.removeItem('username');
+    this.props.navigate('/login');
+  };
+
+  render() {
+    return (
+      <div className="admin-home">
+        <h1>Bienvenue dans l'espace administrateur</h1>
+        <div className="admin-buttons">
+          <button onClick={this.goToAdminControl}>Modifier les Artistes</button>
+          <button onClick={this.goToNouveautes}>Modifier les Nouveautés</button>
+          <button onClick={this.goToUrgent}>Modifier les Actualités Urgentes</button>
+          <button onClick={this.goToPartenaires}>Modifier les Partenaires</button>
+        </div>
+        <button className='logout' onClick={this.handleLogout}>Se déconnecter</button>
       </div>
-    </div>
-  );
+    );
+  }
+}
+
+// HOC pour injecter `navigate` en tant que prop
+const withNavigation = (Component) => {
+  return (props) => <Component {...props} navigate={useNavigate()} />;
 };
 
-export default AdminAccueil;
+export default withNavigation(AdminAccueil);

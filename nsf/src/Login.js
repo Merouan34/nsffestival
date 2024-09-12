@@ -66,7 +66,7 @@ class Login extends Component {
         this.setState({ message: 'Connexion réussie.' });
         localStorage.setItem('token', data.token);
         localStorage.setItem('userType', data.admin ? 'admin' : 'user');
-        localStorage.setItem('username', data.username); // Stocker le nom d'utilisateur
+        localStorage.setItem('username', this.state.email); // Stocker le nom d'utilisateur
 
         // Redirection basée sur le statut d'admin
         if (data.admin === 1) {

@@ -1,28 +1,28 @@
 import React, { Component } from 'react';
-import './MessageUrgent.css'; // Assure-toi de créer ce fichier CSS
+import './MessageUrgent.css'; // Assurez-vous de créer ce fichier CSS
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
 class MessageUrgent extends Component {
-    constructor( props) {
-		super( props );
-		this.state = {
-        urgents: [],
-        currentPage: 1,
-        totalPages: 1,
-        visible: true
+  constructor(props) {
+    super(props);
+    this.state = {
+      urgents: [],
+      currentPage: 1,
+      totalPages: 1,
+      visible: true,
+    };
   }
-}
-  componentDidMount() {
+
+  async componentDidMount() {
+    // Vérifie si le message urgent a été caché précédemment
     const messageHidden = localStorage.getItem('messageUrgentHidden');
     if (messageHidden) {
-      this.setState({ visible: true });
+      this.setState({ visible: false });
+    } else {
       this.fetchMessages();
-  }
-      return;
     }
-
-    
+  }
 
   async fetchMessages(page = 1) {
     try {
@@ -30,10 +30,10 @@ class MessageUrgent extends Component {
         mode: 'cors',
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
       });
-     
+
       if (!response.ok) {
         throw new Error('Erreur lors de la récupération des messages urgents');
       }
@@ -42,23 +42,23 @@ class MessageUrgent extends Component {
       this.setState({
         urgents: data.urgents,
         currentPage: page,
-        totalPages: data.totalPages
-    });
-      this.setState({isLoading:false})
-      
-      
+        totalPages: data.totalPages,
+        isLoading: false,
+      });
     } catch (error) {
       console.error('Erreur lors de la récupération des messages urgents:', error);
     }
   }
- 
+
   handleClose = () => {
     this.setState({ visible: false });
     localStorage.setItem('messageUrgentHidden', 'true');
   };
+
   handlePageChange = (newPage) => {
     this.fetchMessages(newPage); // Change la page et récupère les nouveaux messages
   };
+
   render() {
     const { urgents, currentPage, totalPages, visible } = this.state;
 
@@ -69,17 +69,15 @@ class MessageUrgent extends Component {
         {urgents.length === 0 ? (
           <p>Aucun message urgent disponible.</p>
         ) : (
-           urgents.map((msg, index) => (
-            <>
+          urgents.map((msg, index) => (
             <div key={index} className="message-urgent-item">
               <p className="message-urgent-text">
                 {msg.titre}
               </p>
             </div>
-            </>
           ))
         )}
-        <a href={apiUrl+'/actu'} className="message-urgent-link"> En savoir plus</a>
+        <a href={`${apiUrl}/actu`} className="message-urgent-link">En savoir plus</a>
         <button className="message-urgent-close" onClick={this.handleClose}>
           &times;
         </button>

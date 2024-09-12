@@ -1,0 +1,46 @@
+/* CookieConsent.css */
+.cookie-consent-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Fond noir avec haute opacité */
+  color: #fff;
+  padding: 20px 30px; /* Espacement intérieur plus large pour une bannière plus grande */
+  display: flex;
+  flex-direction: column; /* Affichage en colonne pour espacer le texte des boutons */
+  align-items: center; /* Centre les éléments horizontalement */
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.6); /* Ombre pour donner plus de profondeur */
+  z-index: 1000; /* S'assurer que la bannière est au-dessus des autres éléments */
+  font-family: 'Poppins', sans-serif; /* Utilisation de la police Poppins */
+  gap: 15px; /* Espacement entre les éléments de la bannière */
+}
+
+.cookie-consent-banner p {
+  margin: 0;
+  font-size: 18px; /* Taille de police plus grande pour meilleure lisibilité */
+  text-align: center; /* Centre le texte */
+  line-height: 1.5; /* Augmente l'interligne pour une meilleure lisibilité */
+}
+
+.cookie-buttons {
+  display: flex;
+  gap: 15px; /* Espacement entre les boutons */
+}
+
+.cookie-consent-banner button {
+  background-color: #ff6600; /* Couleur principale */
+  color: #fff;
+  border: none;
+  padding: 12px 25px; /* Plus de padding pour des boutons plus grands */
+  border-radius: 8px; /* Coins arrondis pour un style moderne */
+  cursor: pointer;
+  font-size: 16px; /* Taille de police lisible */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transition douce pour couleur et effet de survol */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Ombre légère autour des boutons */
+}
+
+.cookie-consent-banner button:hover {
+  background-color: #e65c00; /* Couleur au survol */
+  transform: scale(1.05); /* Effet de zoom léger au survol */
+}

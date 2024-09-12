@@ -8,11 +8,16 @@ class Nouveaute extends Component {
     news: [],
     currentIndex: 0,
     isLoading: true,
+    error: null, // Ajouter un état pour gérer les erreurs
   };
 
   async componentDidMount() {
-    await this.fetchAllNews();
-    this.startAutoScroll();
+    try {
+      await this.fetchAllNews();
+      this.startAutoScroll();
+    } catch (error) {
+      this.setState({ error: 'Erreur lors du chargement des nouveautés. Veuillez réessayer plus tard.' });
+    }
   }
 
   // Fonction pour fetch toutes les pages de nouveautés
@@ -21,23 +26,30 @@ class Nouveaute extends Component {
     let currentPage = 1;
     let totalPages = 1;
 
-    while (currentPage <= totalPages) {
-      try {
+    try {
+      while (currentPage <= totalPages) {
         const response = await fetch(`${apiUrl}/api/news?page=${currentPage}`);
+        if (!response.ok) {
+          throw new Error('Erreur lors de la récupération des données');
+        }
         const data = await response.json();
         allNews.push(...data.news);
         totalPages = data.totalPages;
         currentPage++;
-      } catch (error) {
-        console.error('Erreur lors de la récupération des nouveautés:', error);
-        break;
       }
-    }
 
-    this.setState({
-      news: allNews,
-      isLoading: false,
-    });
+      this.setState({
+        news: allNews,
+        isLoading: false,
+        error: null, // Remettre l'erreur à null si la requête réussit
+      });
+    } catch (error) {
+      console.error('Erreur lors de la récupération des nouveautés:', error);
+      this.setState({
+        isLoading: false,
+        error: 'Erreur lors de la récupération des nouveautés. Veuillez réessayer plus tard.',
+      });
+    }
   };
 
   // Fonction pour faire défiler les nouveautés automatiquement
@@ -55,7 +67,7 @@ class Nouveaute extends Component {
   }
 
   render() {
-    const { news, currentIndex, isLoading } = this.state;
+    const { news, currentIndex, isLoading, error } = this.state;
     const currentNews = news[currentIndex];
 
     return (
@@ -64,23 +76,26 @@ class Nouveaute extends Component {
         <div className="nouveaute-slider">
           {isLoading ? (
             <p>Chargement...</p>
+          ) : error ? (
+            <p className="error-message">{error}</p>
           ) : (
-            <div className="nouveaute-item">
-              <h3 className="nouveaute-item-title">{currentNews.titre}</h3>
-              <p className="nouveaute-item-description">{currentNews.descriptionpb}</p>
-              
-            </div>
+            <>
+              <div className="nouveaute-item">
+                <h3 className="nouveaute-item-title">{currentNews.titre}</h3>
+                
+              </div>
+              <button className="slider-arrow left" onClick={() => this.setState((prevState) => ({
+                currentIndex: (prevState.currentIndex - 1 + prevState.news.length) % prevState.news.length
+              }))}>
+                &larr;
+              </button>
+              <button className="slider-arrow right" onClick={() => this.setState((prevState) => ({
+                currentIndex: (prevState.currentIndex + 1) % prevState.news.length
+              }))}>
+                &rarr;
+              </button>
+            </>
           )}
-          <button className="slider-arrow left" onClick={() => this.setState((prevState) => ({
-            currentIndex: (prevState.currentIndex - 1 + prevState.news.length) % prevState.news.length
-          }))}>
-            &larr;
-          </button>
-          <button className="slider-arrow right" onClick={() => this.setState((prevState) => ({
-            currentIndex: (prevState.currentIndex + 1) % prevState.news.length
-          }))}>
-            &rarr;
-          </button>
         </div>
       </div>
     );

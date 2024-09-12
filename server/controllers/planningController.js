@@ -26,8 +26,7 @@ async function getAllPlanning(req, res) {
       try {
         const { nomArtist } = req.params;
         const updatedData = req.body;
-        console.log('Nom de l\'artiste:', nomArtist);
-        console.log('Données de mise à jour:', updatedData);
+        
 
         const db = getDb();
         const result = await db.collection('planning').findOneAndUpdate(

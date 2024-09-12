@@ -1,9 +1,9 @@
 import React from 'react';
-import {images} from './constants/index'
 import './Header.css';
 import { NavLink } from 'react-router-dom';
 import MessageUrgent from './MessageUrgent';
 import Nouveaute from './Nouveaute';
+import { FiFacebook, FiTwitter, FiInstagram, FiYoutube,FiLinkedin} from 'react-icons/fi';
 
 const Header = () => (
  <div className="app__header app__wrapper section__padding" id="home">

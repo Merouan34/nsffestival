@@ -21,6 +21,7 @@ import AdminAccueil from './AdminAccueil';
 import AdminNouveautes from './AdminNouveautes';
 import AdminUrgent from './AdminUrgent';
 import AdminPart from './AdminPart';
+import CookieConsent from './CookieConsent';
 const App = () => {
   return (
     <>
@@ -46,6 +47,7 @@ const App = () => {
         <Route path="/admin-part" element={<AdminPart />} />
         <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
+      <CookieConsent />
       <Footer/>
     </>
   )

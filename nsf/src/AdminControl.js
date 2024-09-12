@@ -382,7 +382,6 @@ class AdminControl extends Component {
       )}
     </section>
   </div>
-  
   <button onClick={this.handleLogout}>Se déconnecter</button>
 </div>
 
