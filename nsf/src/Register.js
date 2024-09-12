@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import './Account.css';
 
+
 const apiUrl = process.env.REACT_APP_API_URL;
 const REACT_APP_RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY; 
+
 
 class Register extends Component {
   state = {
@@ -14,8 +16,7 @@ class Register extends Component {
     passwordError: '',
     confirmPasswordError: '',
     message: '',
-    recaptchaToken: '',
-    capvalue : null // Stocke le token reCaptcha
+    recaptchaToken: '' // État pour le token reCAPTCHA
   };
 
   handleChange = (e) => {
@@ -64,21 +65,25 @@ class Register extends Component {
     this.setState({ confirmPasswordError });
   };
 
-  handleChangeCap = (e) => {
-    this.setState({ capvalue: e.target.value });
+  handleRecaptchaChange = (token) => {
+    this.setState({ recaptchaToken: token }); // Met à jour le token reCAPTCHA dans l'état
   };
 
   handleSubmit = async (e) => {
     e.preventDefault();
     const { name, email, password, passwordError, confirmPasswordError, recaptchaToken } = this.state;
 
-    if (passwordError || confirmPasswordError) return;
+    // Assurez-vous qu'il n'y a pas d'erreur de mot de passe et que le token reCAPTCHA est présent
+    if (passwordError || confirmPasswordError || !recaptchaToken) {
+      this.setState({ message: 'Veuillez remplir correctement le formulaire et vérifier le reCAPTCHA.' });
+      return;
+    }
 
     try {
       const response = await fetch(`${apiUrl}/api/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, password, recaptchaToken })
+        body: JSON.stringify({ name, email, password, recaptchaToken }) // Inclut le token reCAPTCHA
       });
 
       const data = await response.json();
@@ -113,7 +118,7 @@ class Register extends Component {
               onChange={this.handleChange}
               required
             />
-            {this.state.passwordError && <p className="">{this.state.passwordError}</p>}
+            {this.state.passwordError && <p className="error">{this.state.passwordError}</p>}
 
             <label htmlFor="confirmPassword">Confirmer le mot de passe</label>
             <input
@@ -123,17 +128,18 @@ class Register extends Component {
               onChange={this.handleChange}
               required
             />
-            {this.state.confirmPasswordError && <p className="">{this.state.confirmPasswordError}</p>}
+            {this.state.confirmPasswordError && <p className="error">{this.state.confirmPasswordError}</p>}
 
             {/* Composant reCaptcha */}
             <ReCAPTCHA
-              sitekey='6Lf1fz4qAAAAAJMEQxOV3VAnTOkacDfBVwS-uy09'
-              onChange={this.handleChangeCap} // Remplace par ta clé de site reCaptcha
+              sitekey="6Lf1fz4qAAAAAJMEQxOV3VAnTOkacDfBVwS-uy09" // Remplace par ta clé de site reCaptcha
+              onChange={this.handleRecaptchaChange} 
             />
+
             <input
               type="submit"
               value="S'inscrire"
-               // Désactivé si le captcha n'est pas rempli
+              disabled={!this.state.recaptchaToken} // Désactivé si le reCAPTCHA n'est pas rempli
             />
           </form>
           {this.state.message && <p>{this.state.message}</p>}

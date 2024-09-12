@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
 import './Account.css';
 
-const apiUrl = process.env.REACT_APP_API_URL;
-const REACT_APP_RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY; 
+const apiUrl = process.env.REACT_APP_API_URL; // URL de l'API à partir de variables d'environnement
+const REACT_APP_RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY; // Clé de site reCAPTCHA
 
 // Fonction pour vérifier la connexion et rediriger si nécessaire
 const checkAuth = (navigate) => {
@@ -27,7 +27,7 @@ class Login extends Component {
       email: '',
       password: '',
       message: '',
-      capvalue : null
+      recaptchaToken: '' // État pour le token reCAPTCHA
     };
   }
 
@@ -39,19 +39,25 @@ class Login extends Component {
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
-  handleChangeCap = (e) => {
-    this.setState({ capvalue: e.target.value });
+
+  handleRecaptchaChange = (token) => {
+    this.setState({ recaptchaToken: token }); // Met à jour le token reCAPTCHA dans l'état
   };
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { email, password } = this.state;
+    const { email, password, recaptchaToken } = this.state;
+
+    if (!recaptchaToken) {
+      this.setState({ message: 'Veuillez compléter le reCAPTCHA.' });
+      return;
+    }
 
     try {
       const response = await fetch(`${apiUrl}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, password, recaptchaToken }) // Inclut le token reCAPTCHA dans la requête
       });
 
       const data = await response.json();
@@ -87,12 +93,14 @@ class Login extends Component {
 
             <label htmlFor="password">Mot de passe</label>
             <input type="password" id="password" name="password" onChange={this.handleChange} required />
-            <ReCAPTCHA
-              sitekey='6Lf1fz4qAAAAAJMEQxOV3VAnTOkacDfBVwS-uy09'
-              onChange={this.handleChangeCap} // Remplace par ta clé de site reCaptcha
-            />
-            <input type="submit" value="Se connecter" />
             
+            {/* Composant reCaptcha */}
+            <ReCAPTCHA
+              sitekey="6Lf1fz4qAAAAAJMEQxOV3VAnTOkacDfBVwS-uy09" // Utilise la clé de site reCAPTCHA depuis les variables d'environnement
+              onChange={this.handleRecaptchaChange}
+            />
+
+            <input type="submit" value="Se connecter" />
           </form>
          
           {this.state.message && <p>{this.state.message}</p>}
@@ -103,6 +111,7 @@ class Login extends Component {
   }
 }
 
+// HOC pour injecter `useNavigate` dans le composant de classe
 const withNavigation = (Component) => {
   return (props) => <Component {...props} navigate={useNavigate()} />;
 };
