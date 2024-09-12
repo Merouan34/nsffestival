@@ -14,7 +14,8 @@ class Register extends Component {
     passwordError: '',
     confirmPasswordError: '',
     message: '',
-    recaptchaToken: '', // Stocke le token reCaptcha
+    recaptchaToken: '',
+    capvalue : null // Stocke le token reCaptcha
   };
 
   handleChange = (e) => {
@@ -63,9 +64,8 @@ class Register extends Component {
     this.setState({ confirmPasswordError });
   };
 
-  handleCaptchaChange = (token) => {
-    // Met à jour l'état avec le token reCaptcha
-    this.setState({ recaptchaToken: token });
+  handleChangeCap = (e) => {
+    this.setState({ capvalue: e.target.value });
   };
 
   handleSubmit = async (e) => {
@@ -127,14 +127,13 @@ class Register extends Component {
 
             {/* Composant reCaptcha */}
             <ReCAPTCHA
-              sitekey={REACT_APP_RECAPTCHA_SITE_KEY} // Remplace par ta clé de site reCaptcha
-              onChange={this.handleCaptchaChange}
+              sitekey='6Lf1fz4qAAAAAJMEQxOV3VAnTOkacDfBVwS-uy09'
+              onChange={this.handleChangeCap} // Remplace par ta clé de site reCaptcha
             />
-
             <input
               type="submit"
               value="S'inscrire"
-              disabled={!!this.state.passwordError || !!this.state.confirmPasswordError || !this.state.recaptchaToken} // Désactivé si le captcha n'est pas rempli
+               // Désactivé si le captcha n'est pas rempli
             />
           </form>
           {this.state.message && <p>{this.state.message}</p>}

@@ -27,6 +27,7 @@ class Login extends Component {
       email: '',
       password: '',
       message: '',
+      capvalue : null
     };
   }
 
@@ -37,6 +38,9 @@ class Login extends Component {
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
+  };
+  handleChangeCap = (e) => {
+    this.setState({ capvalue: e.target.value });
   };
 
   handleSubmit = async (e) => {
@@ -84,8 +88,8 @@ class Login extends Component {
             <label htmlFor="password">Mot de passe</label>
             <input type="password" id="password" name="password" onChange={this.handleChange} required />
             <ReCAPTCHA
-              sitekey={REACT_APP_RECAPTCHA_SITE_KEY} // Remplace par ta clé de site reCaptcha
-              onChange={this.handleCaptchaChange}
+              sitekey='6Lf1fz4qAAAAAJMEQxOV3VAnTOkacDfBVwS-uy09'
+              onChange={this.handleChangeCap} // Remplace par ta clé de site reCaptcha
             />
             <input type="submit" value="Se connecter" />
             
