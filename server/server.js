@@ -24,7 +24,7 @@ const corsOptions = {
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
-app.use(helmet());
+
 // Appliquer le middleware CORS avec les options configurées
 app.use(cors(corsOptions));
 
