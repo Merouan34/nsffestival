@@ -30,14 +30,14 @@ const swaggerOptions = {
     ],
   },
   apis: [
-    'server/routes/artists.js', 
-    'server/routes/cardRoutes.js',
-    'server/routes/planningRoutes.js',
-    'server/routes/urgentRoutes.js',
-    'server/routes/newsRoutes.js',
-    'server/routes/partenaireRoutes.js',
-    'server/routes/usersRoutes.js'
-  ], 
+  './routes/artists.js', 
+  './routes/cardRoutes.js',
+  './routes/planningRoutes.js',
+  './routes/urgentRoutes.js',
+  './routes/newsRoutes.js',
+  './routes/partenaireRoutes.js',
+  './routes/usersRoutes.js'
+] 
 // Chemin vers les fichiers de routes à documenter
 };
 const app = express();
