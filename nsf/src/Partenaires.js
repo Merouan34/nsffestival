@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Entete from './Entete'
 import './Partenaires.css'
 import PuffLoader from "react-spinners/PuffLoader";
+
 const apiUrl = process.env.REACT_APP_API_URL;
 
 const override = {
@@ -42,7 +43,7 @@ export default class Partenaires extends Component {
   };
     render() {
       const { partenaires, loading, error } = this.state;
-  
+      console.log(partenaires)
     return (
       <>
       <Entete titre='Nos partenaires'/>
@@ -59,7 +60,7 @@ export default class Partenaires extends Component {
                 :
           partenaires.map(partenaire => (
             <div key={partenaire._id} className="partenaire-card">
-              <img src={partenaire.Img} alt={partenaire.nomPartenaire} className="partenaire-logo" />
+              <img src={partenaire.img} alt={partenaire.nomPartenaire} className="partenaire-logo" />
               <div className="partenaire-info">
                 <h2>{partenaire.nomPartenaire}</h2>
                 <p>{partenaire.description}</p>
